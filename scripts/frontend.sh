@@ -20,8 +20,14 @@ if [[ ! -d "/var/www/ffplayout-frontend" ]]; then
     rm "${versionFrontend}.tar.gz"
 
     ln -s "$mediaPath" /var/www/ffplayout-frontend/static/
+
+    if [[ $useHTTPS == 'y' ]]; then
+        proto='https'
+    else
+        proto='http'
+    fi
 cat <<EOF > "ffplayout-frontend/.env"
-BASE_URL='http://$domainName'
+BASE_URL='${proto}://${domainName}'
 API_URL='/'
 EOF
 

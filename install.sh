@@ -37,6 +37,25 @@ while true; do
     fi
 done
 
+echo ""
+echo "------------------------------------------------------------------------------"
+echo "are you implement your https certficate after installation?"
+echo "------------------------------------------------------------------------------"
+echo ""
+
+while true; do
+    read -p "Do you use https? (Y/n) :$ " yn
+    case $yn in
+        [Yy]* ) useHTTPS="y"; break;;
+        [Nn]* ) useHTTPS="n"; break;;
+        * ) (
+            echo "------------------------------------"
+            echo "Please answer yes or no!"
+            echo ""
+            );;
+    esac
+done
+
 if ! ffmpeg -version &> /dev/null; then
     echo ""
     echo "------------------------------------------------------------------------------"
